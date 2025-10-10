@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.10)
+project(main CXX)
+set(CMAKE_CXX_STANDARD 20)
+add_executable(comb_sort "comb_sort.cpp")
+add_executable(comb_sort_simplified "comb_sort(simplified).cpp")
