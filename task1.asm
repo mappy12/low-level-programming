@@ -9,11 +9,9 @@ section .rodata
     fact9: dd 362880.0
 
 section .bss
-    result: resd 1
 
 section .text
     global main
-    extern printf
 
 main:
     movss xmm0, [x]
@@ -34,16 +32,14 @@ main:
     divss xmm4, [fact5]
     addss xmm1, xmm4          ; + x^5/5!
 
-    movss xmm4, xmm4
-    mulss xmm4, xmm2          ; x^7
-    divss xmm4, [fact7]
-    subss xmm1, xmm4          ; - x^7/7!
+    movss xmm5, xmm4
+    mulss xmm5, xmm2          ; x^7
+    divss xmm5, [fact7]
+    subss xmm1, xmm5          ; - x^7/7!
 
-    movss xmm4, xmm4
-    mulss xmm4, xmm2          ; x^9
-    divss xmm4, [fact9]
-    addss xmm1, xmm4          ; + x^9/9!
-
-    movss [result], xmm1
+    movss xmm6, xmm5
+    mulss xmm6, xmm2          ; x^9
+    divss xmm6, [fact9]
+    addss xmm1, xmm6          ; + x^9/9!
 
     ret
