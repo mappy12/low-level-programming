@@ -18,33 +18,23 @@ main:
     call printf
     add  esp, 4
 
-    ; ============================
-    ; scanf("%f %d", &x, &n)
-    ; ============================
-    lea eax, [ebp-4]        ; &n
+    lea eax, [ebp-4]       
     push eax
-    lea eax, [ebp-8]        ; &x
+    lea eax, [ebp-8]     
     push eax
     push fmt_scanf
     call scanf
     add  esp, 12
 
-    ; ============================
-    ; printf("x = %f, n = %d")
-    ; ============================
-    push dword [ebp-4]      ; n
+    push dword [ebp-4]      
 
-    fld dword [ebp-8]       ; x → ST0
-    fstp qword [esp]        ; double аргумент
+    fld dword [ebp-8]      
+    sub esp, 8
+    fstp qword [esp]        
 
     push fmt_out_input
     call printf
     add esp, 16
-
-
-    ; ============================
-    ; Инициализация ряда
-    ; ============================
 
     fld dword [ebp-8]
     fst dword [ebp-12]      ; res = x
@@ -64,7 +54,7 @@ main:
 ; loop_taylor:
 ; ============================
 loop_taylor:
-    ; term = -term * xsq / ((2k)(2k+1))
+    ;term = -term * x^2 / ((2n)*(2n+1))
 
     fld dword [ebp-16]      ; term
     fchs                    ; -term
@@ -94,9 +84,6 @@ loop_taylor:
     jnz loop_taylor
 
 
-; ============================
-; done:
-; ============================
 done:
     fld dword [ebp-12]      ; result
 
