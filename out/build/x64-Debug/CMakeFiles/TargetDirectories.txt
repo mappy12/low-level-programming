@@ -1,3 +1,0 @@
-C:/Users/mappydesu/Desktop/low-level-programming/out/build/x64-Debug/CMakeFiles/accessCheck.dir
-C:/Users/mappydesu/Desktop/low-level-programming/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-C:/Users/mappydesu/Desktop/low-level-programming/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
