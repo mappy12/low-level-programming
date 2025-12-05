@@ -3,7 +3,7 @@ section .data
     struc_data:
         dq 2              ; [rcx] - qword (целое число)
         dd 6.0            ; [rcx+8] - float (будет делиться)
-        dd 3.0            ; [rcx+0Ch] - float (должен равняться результату деления)
+        dd 3.0           ; [rcx+0Ch] - float (должен равняться результату деления)
 
 section .text
     global main

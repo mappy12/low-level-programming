@@ -1,10 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\mappydesu\\Desktop\\low-level-programming\\task2\\task2-c\\",
+  "WorkspaceRootPath": "C:\\Users\\mappydesu\\Desktop\\low-level-programming\\task2\\hard\\task2-c(hard)\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F71F69B2-E9FB-4430-9102-A582C9746D64}|task2-c\\task2-c.vcxproj|C:\\Users\\mappydesu\\Desktop\\low-level-programming\\task2\\task2-c\\task2-c\\task2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F71F69B2-E9FB-4430-9102-A582C9746D64}|task2-c\\task2-c.vcxproj|solutionrelative:task2-c\\task2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F71F69B2-E9FB-4430-9102-A582C9746D64}|task2-c\\task2-c.vcxproj|C:\\Users\\mappydesu\\Desktop\\low-level-programming\\task2\\hard\\task2-c(hard)\\task2-c\\task2(hard).cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F71F69B2-E9FB-4430-9102-A582C9746D64}|task2-c\\task2-c.vcxproj|solutionrelative:task2-c\\task2(hard).cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,12 +23,12 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "task2.cpp",
-              "DocumentMoniker": "C:\\Users\\mappydesu\\Desktop\\low-level-programming\\task2\\task2-c\\task2-c\\task2.cpp",
-              "RelativeDocumentMoniker": "task2-c\\task2.cpp",
-              "ToolTip": "C:\\Users\\mappydesu\\Desktop\\low-level-programming\\task2\\task2-c\\task2-c\\task2.cpp",
-              "RelativeToolTip": "task2-c\\task2.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAQAAAAAAAAAA==",
+              "Title": "task2(hard).cpp",
+              "DocumentMoniker": "C:\\Users\\mappydesu\\Desktop\\low-level-programming\\task2\\hard\\task2-c(hard)\\task2-c\\task2(hard).cpp",
+              "RelativeDocumentMoniker": "task2-c\\task2(hard).cpp",
+              "ToolTip": "C:\\Users\\mappydesu\\Desktop\\low-level-programming\\task2\\hard\\task2-c(hard)\\task2-c\\task2(hard).cpp",
+              "RelativeToolTip": "task2-c\\task2(hard).cpp",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAABUAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-12-05T09:55:36.015Z",
               "EditorCaption": ""

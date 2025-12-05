@@ -37,44 +37,40 @@ main:
     add esp, 16
 
     fld dword [ebp-8]
-    fst dword [ebp-12]      ; res = x
-    fst dword [ebp-16]      ; term = x
+    fst dword [ebp-12]      
+    fst dword [ebp-16]      
 
     fld dword [ebp-8]
     fmul st0, st0
-    fstp dword [ebp-20]     ; xsq = x*x
+    fstp dword [ebp-20]     
 
-    mov eax, 1              ; k = 1
-    mov ecx, [ebp-4]        ; n
+    mov eax, 1              
+    mov ecx, [ebp-4]       
     dec ecx
     js done
 
 
-; ============================
-; loop_taylor:
-; ============================
 loop_taylor:
     ;term = -term * x^2 / ((2n)*(2n+1))
 
-    fld dword [ebp-16]      ; term
-    fchs                    ; -term
-    fmul dword [ebp-20]     ; -term * xsq
+    fld dword [ebp-16]      
+    fchs                    
+    fmul dword [ebp-20]     
 
     mov edx, eax
-    lea edx, [edx+edx]      ; 2k
+    lea edx, [edx+edx]     
     mov ebx, edx
-    inc ebx                 ; 2k+1
-    imul edx, ebx           ; denom = (2k)(2k+1)
+    inc ebx                 
+    imul edx, ebx           
 
     push edx
-    fild dword [esp]        ; int → float
+    fild dword [esp]        
     add esp, 4
 
-    fdivp st1, st0          ; st1 = st1 / st0
+    fdivp st1, st0          
 
-    fstp dword [ebp-16]     ; term = newTerm
+    fstp dword [ebp-16]     
 
-    ; res += term
     fld dword [ebp-12]
     fadd dword [ebp-16]
     fstp dword [ebp-12]
@@ -85,10 +81,10 @@ loop_taylor:
 
 
 done:
-    fld dword [ebp-12]      ; result
+    fld dword [ebp-12]     
 
     sub esp, 8
-    fstp qword [esp]        ; double
+    fstp qword [esp]        
 
     push fmt_sin
     call printf

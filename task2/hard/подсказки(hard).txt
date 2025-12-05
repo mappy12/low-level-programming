@@ -1,0 +1,190 @@
+movdqu  xmm0, xmmword ptr [rbx] \ копируем объект C в xmm0
+lea     rdx, [rsp+38h+var_18] \ сохраняем указатель на объект С
+lea     rcx, [rbp+arg_0] \ указатель на структуру S
+movaps  [rsp+38h+var_18], xmm0 \ копируем xmm0 в эту область стека
+
+………………..
+
+					access6:
+
+.text:00000000004019C0 ; =============== S U B R O U T I N E =======================================
+.text:00000000004019C0
+.text:00000000004019C0 ; Attributes: bp-based frame fuzzy-sp
+.text:00000000004019C0
+.text:00000000004019C0                 public access6
+.text:00000000004019C0 access6         proc near               ; CODE XREF: main+7↑p
+.text:00000000004019C0
+.text:00000000004019C0 var_18          = xmmword ptr -18h
+.text:00000000004019C0 var_8           = qword ptr -8
+.text:00000000004019C0 arg_0           = dword ptr  10h
+.text:00000000004019C0
+.text:00000000004019C0                 push    rbp
+.text:00000000004019C1                 mov     rbp, rsp
+.text:00000000004019C4                 push    rbx  
+.text:00000000004019C5                 mov     rbx, rdx ### 2 аргумент в rbx
+.text:00000000004019C8                 and     rsp, 0FFFFFFFFFFFFFFF0h
+.text:00000000004019CC                 sub     rsp, 30h
+.text:00000000004019D0                 mov     [rbp+arg_0], ecx ### первый арг. на стек
+.text:00000000004019D3                 test    cl, cl ####проверка младшего байта на 0
+.text:00000000004019D5                 jz      short loc_4019DE
+.text:00000000004019D7                 cmp     word ptr [rbp+arg_0+2], 0 ###проверка 2-ух байт по 
+
+смещению + 2
+
+.text:00000000004019DC                 jnz     short loc_4019E5
+.text:00000000004019DE
+.text:00000000004019DE loc_4019DE:                             ; CODE XREF: access6+15↑j
+.text:00000000004019DE                 xor     ecx, ecx        ; bool
+.text:00000000004019E0                 call    _ZL5checkb      ; check(bool)
+.text:00000000004019E5
+.text:00000000004019E5 loc_4019E5:                             ; CODE XREF: access6+1C↑j
+.text:00000000004019E5                 movdqu  xmm0, xmmword ptr [rbx] ### загружаем 16 байт по 
+
+адресу rbx (double quaqword unaligned)
+
+.text:00000000004019E9                 lea     rdx, [rsp+38h+var_18] ### вычисление адреса в стеке [rsp + 0x38 + var_18]
+.text:00000000004019EE                 lea     rcx, [rbp+arg_0] ###вычисляем адрес первого 
+
+аргумента
+
+.text:00000000004019F2                 movaps  [rsp+38h+var_18], xmm0 ### movaps, т.к. 
+
+переменные на стеке выровнены по 16 байт
+
+.text:00000000004019F7                 call    _ZNK4hard4var61C5checkENS0_1SE ; hard::var6::C::check(hard::var6::S)
+.text:00000000004019FC                 movzx   ecx, al         ; bool
+.text:00000000004019FF                 call    _ZL5checkb      ; check(bool)
+.text:0000000000401A04                 mov     rbx, [rbp+var_8] ###возвращаем старый rbx
+.text:0000000000401A08                 leave
+.text:0000000000401A09                 retn
+.text:0000000000401A09 access6         endp
+
+
+
+
+				hard::var6::C::check(hard::var6::S):
+
+
+
+.text:0000000000401950 ; =============== S U B R O U T I N E =======================================
+.text:0000000000401950
+.text:0000000000401950 ; Attributes: bp-based frame fuzzy-sp
+.text:0000000000401950
+.text:0000000000401950 ; hard::var6::C::check(hard::var6::S)const
+.text:0000000000401950                 public _ZNK4hard4var61C5checkENS0_1SE
+.text:0000000000401950 _ZNK4hard4var61C5checkENS0_1SE proc near
+.text:0000000000401950                                         ; CODE XREF: access6+37↓p
+.text:0000000000401950
+.text:0000000000401950 Y               = dword ptr -0Ch
+.text:0000000000401950 var_8           = qword ptr -8
+.text:0000000000401950
+.text:0000000000401950                 push    rbp
+.text:0000000000401951                 mov     rax, rdx ###сохраняем адрес S в rax
+.text:0000000000401954                 xor     r8d, r8d ###счетчик количества единиц
+.text:0000000000401957                 mov     rbp, rsp
+.text:000000000040195A                 push    rbx ###сохраняем rbx
+.text:000000000040195B                 mov     rbx, rcx ###сохраняем this (C*) в rbx
+.text:000000000040195E                 mov     ecx, 3Fh ; '?' ### 3Fh = 63, количество итераций в цикле
+.text:0000000000401963                 and     rsp, 0FFFFFFFFFFFFFFF0h 
+.text:0000000000401967                 sub     rsp, 30h
+.text:000000000040196B                 mov     rdx, [rdx] ###читаем первые 8 байт из S 
+.text:000000000040196E                 mov     r10, [rax+8] ###читаем вторые 8 байт из S
+.text:0000000000401972                 mov     r9d, edx ###копия 4 байт первых 8 байт
+.text:0000000000401975                 shr     rdx, 1
+.text:0000000000401978                 nop     dword ptr [rax+rax+00000000h] ### Для 
+
+облегчения попадания в начало кода используется 
+последовательность инструкций NOP
+
+.text:0000000000401980
+.text:0000000000401980 loc_401980:                             ; CODE XREF: hard::var6::C::check(hard::var6::S)+41↓j
+.text:0000000000401980                 mov     eax, r9d ###копируем 4 байт первых 8 байт
+.text:0000000000401983                 xor     eax, edx ###вычисляется bits ^ (bits >> 1) - GRAY-CODE
+.text:0000000000401985                 shr     rdx, 1
+.text:0000000000401988                 and     eax, 1 #смотрим младший бит
+.text:000000000040198B                 add     r8d, eax ###если 1, то +1
+.text:000000000040198E                 sub     ecx, 1
+.text:0000000000401991                 jnz     short loc_401980
+.text:0000000000401993                 movzx   edx, byte ptr [rbx] ###берет младший байт по адресу, на 
+
+который указывает rbx, и расширяет нулями до 32бит
+
+.text:0000000000401996                 xor     eax, eax ###функция вернет 0, если след условный переход 
+
+сработает
+
+.text:0000000000401998                 cmp     edx, r8d ###сравнение количества единиц с edx
+.text:000000000040199B                 jg      short loc_4019B9
+.text:000000000040199D                 lea     rdx, [rsp+38h+Y] ; Y ###вычисляется адрес переменной Y
+.text:00000000004019A2                 movq    xmm0, r10       ; X ##первые 8 байт в xmm0
+.text:00000000004019A7                 call    frexp ###разбивает чисто на мантиссу и экспоненту, 
+
+экспонента сохраняется по адресу, который передали через rdx
+
+.text:00000000004019AC                 movzx   eax, word ptr [rbx+2] ##берется 2-ух байтовое значение 
+
+по адресу rbx+2 (смешение +2 от начала объекта C)
+
+.text:00000000004019B0                 neg     eax
+.text:00000000004019B2                 cmp     eax, [rsp+38h+Y] ### [rsp+38h+Y] - Y  на стеке, 
+
+сравнение результата frexp с eax
+
+.text:00000000004019B6                 setnle  al ###функция вернет младший байт = 1, если eax не меньше или равен Y
+.text:00000000004019B9
+.text:00000000004019B9 loc_4019B9:                             ; CODE XREF: hard::var6::C::check(hard::var6::S)+4B↑j
+.text:00000000004019B9                 mov     rbx, [rbp+var_8]
+.text:00000000004019BD                 leave
+.text:00000000004019BE                 retn
+.text:00000000004019BE _ZNK4hard4var61C5checkENS0_1SE endp
+.text:00000000004019BE
+.text:00000000004019BE ; ---------------------------------------------------------------------------
+.text:00000000004019BF                 align 20h
+
+
+
+					check(bool):
+
+.text:0000000000401580 ; =============== S U B R O U T I N E =======================================
+.text:0000000000401580
+.text:0000000000401580
+.text:0000000000401580 ; __int64 __fastcall check(bool)
+.text:0000000000401580 _ZL5checkb      proc near               ; CODE XREF: access1+1B↓p
+.text:0000000000401580                                         ; access1+2E↓p ...
+.text:0000000000401580                 test    cl, cl
+.text:0000000000401582                 jz      short loc_401590
+.text:0000000000401584                 lea     rcx, Buffer     ; "Access granted"
+.text:000000000040158B                 jmp     puts
+.text:0000000000401590 ; ---------------------------------------------------------------------------
+.text:0000000000401590
+.text:0000000000401590 loc_401590:                             ; CODE XREF: check(bool)+2↑j
+.text:0000000000401590                 push    rbp
+.text:0000000000401591                 lea     rcx, aAccessDenied ; "Access denied"
+.text:0000000000401598                 mov     rbp, rsp
+.text:000000000040159B                 sub     rsp, 20h
+.text:000000000040159F                 call    puts
+.text:00000000004015A4                 or      ecx, 0FFFFFFFFh ; получение -1, для exit(-1)
+.text:00000000004015A7                 call    exit
+.text:00000000004015A7 _ZL5checkb      endp
+
+
+///////////////////////////////////////////ИТОГИ\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+В начале access6:
+
+test cl, cl
+jz short loc_4019DE        ; если младший байт == 0 => Access Denied
+cmp word ptr [rbp+arg_0+2], 0
+jnz short loc_4019E5        ; если байты 2-3 регистра ECX != 0 => вполнение продолжается
+
+
+В функции hard::C:check:
+
+Структура S проходит проверку => al = 1 => Access Granted!
+Не проходит => al = 0 => Access Denied!
+
+Для Access Granted!:
+
+В EXC необходимо передавать такое число, у которого byte0 и byte2-3 не равны 0.
+Последний бит в каждом из 8 байт структуры S не должен быть равен 0.
+

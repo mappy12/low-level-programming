@@ -1,0 +1,54 @@
+.text:00000000004017B0 ; =============== S U B R O U T I N E =======================================
+.text:00000000004017B0
+.text:00000000004017B0
+.text:00000000004017B0                 public access6
+.text:00000000004017B0 access6         proc near               ; CODE XREF: main+7↑p
+.text:00000000004017B0                 pxor    xmm0, xmm0
+.text:00000000004017B4                 movss   xmm2, dword ptr [rcx+8] ### загружаем 4 байта из rcx+8 
+
+как float: float b = s -> b
+
+.text:00000000004017B9                 cvttss2si eax, dword ptr [rcx+0Ch] ### загружаем float из rcx+0xC, 
+
+конвертируя в int c отбрасыванием дробной части: eax = (int)s -> c
+
+.text:00000000004017BE                 cvtsi2ss xmm0, qword ptr [rcx] ###преобразуем 64-битное целое во 
+
+float????
+
+.text:00000000004017C3                 divss   xmm2, xmm0
+.text:00000000004017C7                 pxor    xmm0, xmm0
+.text:00000000004017CB                 cvtsi2ss xmm0, eax ###конвертируем целое во float
+.text:00000000004017CF                 ucomiss xmm2, xmm0 ###обычное сравнение, но выставит флаг PF=1, 
+
+если unordered (то есть один из операндов NaN)
+
+.text:00000000004017D2                 jp      short loc_401810 ###jump if parity (хотя бы один NaN)
+.text:00000000004017D4                 jnz     short loc_401810
+.text:00000000004017D6                 push    rbp
+.text:00000000004017D7                 movapd  xmm0, xmm1      ; double ##копируем 2 аргумент из xmm1
+.text:00000000004017DB                 mov     rbp, rsp
+.text:00000000004017DE                 push    rsi
+.text:00000000004017DF                 mov     esi, r8d ###копируем 3 аргумент
+.text:00000000004017E2                 push    rbx
+.text:00000000004017E3                 sub     rsp, 20h
+.text:00000000004017E7                 call    _ZSt7signbitd   ; std::signbit(double) ###true - если 
+
+знак числа отрицательный
+
+.text:00000000004017EC                 pxor    xmm0, xmm0
+.text:00000000004017F0                 cvtsi2ss xmm0, esi      ; float
+.text:00000000004017F4                 mov     ebx, eax
+.text:00000000004017F6                 call    _ZSt7signbitf   ; std::signbit(float)
+.text:00000000004017FB                 add     rsp, 20h ###освобождение памяти
+.text:00000000004017FF                 xor     ebx, eax
+.text:0000000000401801                 movzx   ecx, bl         ; this
+.text:0000000000401804                 pop     rbx
+.text:0000000000401805                 pop     rsi
+.text:0000000000401806                 pop     rbp
+.text:0000000000401807                 jmp     _ZN6mediumL5checkEb ; medium::check(bool)
+.text:0000000000401810 loc_401810:                             ; CODE XREF: access6+22↑j
+.text:0000000000401810                                         ; access6+24↑j
+.text:0000000000401810                 xor     ecx, ecx        ; this
+.text:0000000000401812                 jmp     _ZN6mediumL5checkEb ;::check(bool)
+.text:0000000000401812 access6         endp
