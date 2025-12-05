@@ -1,0 +1,14 @@
+hard.cpp.obj    _ZSt5isinff
+hard.cpp.obj    _ZSt5isnanf
+hard.cpp.obj    _ZNK4hard4var11C5checkENS0_1SE
+hard.cpp.obj    access1
+hard.cpp.obj    _ZNK4hard4var21C5checkENS0_1SE
+hard.cpp.obj    access2
+hard.cpp.obj    _ZNK4hard4var31C5checkERKNS0_1SE
+hard.cpp.obj    access3
+hard.cpp.obj    _ZNK4hard4var51C5checkERKNS0_1SE
+hard.cpp.obj    access5
+hard.cpp.obj    _ZNK4hard4var61C5checkENS0_1SE
+hard.cpp.obj    access6
+hard.cpp.obj    _ZNK4hard4var41C5checkERKNS0_1SE
+hard.cpp.obj    access4
